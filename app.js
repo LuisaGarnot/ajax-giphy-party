@@ -13,15 +13,18 @@ async function RequestGif() {
         const src = response.data[randomGif].images.original.url;
         const img = document.createElement("img");
         img.src = src;
-        img.classList.add = '.gif-container';
+        img.classList.add('.gif-container');
         gifContainer.append(img);
+
+        
     }
    return response.data.data; 
+   
 }
 
 //Listen for submit search and empty search bar afterwards
 searchButton.addEventListener("click", async function(evt) {
-    const searchBar = document.getElementsByClassName(".search-bar");
+    const searchBar = document.querySelector(".search-bar");
     evt.preventDefault();
     const newGif = await RequestGif(searchBar.value);
     
@@ -31,7 +34,7 @@ searchButton.addEventListener("click", async function(evt) {
 
 //Remove all gifs from the page
 removeButton.addEventListener('click', function() {
-    const gifContainer = document.getElementsByClassName("gif-container");
+    const gifContainer = document.querySelector(".gif-container");
     gifContainer.innerHTML = "";
     console.log("inside Event")
 })
